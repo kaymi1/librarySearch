@@ -1,0 +1,6 @@
+com/library/search/service/model/Book$BookBuilder.class
+com/library/search/service/model/Book.class
+com/library/search/service/LibrarySearchApplication.class
+com/library/search/service/payload/BookPayload.class
+com/library/search/service/repository/BookRepository.class
+com/library/search/service/controller/BookController.class
