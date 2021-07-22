@@ -1,0 +1,22 @@
+.wrapper-form{
+    width: 1160px;
+    margin: 0 auto;
+}
+
+.header-content{
+    text-align: center;
+    size: 20px;
+    
+}
+
+#result{
+    margin-top: 100px;
+}
+
+.btn-wrapper{
+    display: flex;
+    justify-content: center;
+}
+.wrapper-table{
+    margin-top: 30px;
+}
