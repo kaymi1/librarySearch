@@ -1,11 +1,15 @@
 package com.library.search.service;
 
+import com.library.search.service.handlers.AdminLogoutRedirectHandler;
 import com.library.search.service.handlers.CustomAuthenticationFailureHandler;
+import com.library.search.service.handlers.CustomLogoutHandler;
 import com.library.search.service.handlers.CustomLogoutSuccessHandler;
 import com.library.search.service.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -16,7 +20,10 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
+import org.springframework.security.web.authentication.logout.LogoutHandler;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 
 @Configuration
@@ -34,9 +41,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 //                .and()
 //                .exceptionHandling().authenticationEntryPoint((req, rsp, e) -> rsp.sendError(HttpServletResponse.SC_UNAUTHORIZED))
-//                .and()
+                .exceptionHandling().authenticationEntryPoint((req, rsp, e) -> {
+                    new DefaultRedirectStrategy().sendRedirect(req, rsp, "/login");
+        })
+                .and()
                 .authorizeRequests()
-                .antMatchers("/resources/**", "/js/**", "/css/**", "/signup", "/login", "/").permitAll()
+                .antMatchers("/resources/**", "/js/**", "/css/**", "/signup", "/login**", "/").permitAll()
                 .antMatchers(HttpMethod.GET, "/books").permitAll()
                 .antMatchers(HttpMethod.POST, "/books").hasRole("ADMIN")
                 .antMatchers("/books/**", "/add-book").hasRole("ADMIN")
@@ -50,10 +60,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .permitAll()
 //                .and()
                 .logout()
-                .logoutSuccessUrl("/")
                 .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID")
+//                .logoutUrl("/cust-logout")
                 .logoutSuccessHandler(logoutSuccessHandler())
+                .addLogoutHandler(logoutHandler())
+//                .logoutSuccessUrl("/login")
                 .permitAll();
     }
 
@@ -94,6 +106,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public LogoutSuccessHandler logoutSuccessHandler(){
         return new CustomLogoutSuccessHandler();
+    }
+
+    @Bean
+    public LogoutHandler logoutHandler(){
+        return new CustomLogoutHandler();
+    }
+
+    @Bean
+    @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
+    public AdminLogoutRedirectHandler adminLogoutRedirectHandler(){
+        return new AdminLogoutRedirectHandler();
     }
 
 //    @Bean

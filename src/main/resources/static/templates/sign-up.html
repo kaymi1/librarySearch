@@ -15,12 +15,12 @@
   <div class="wrapper-form">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Library</a>
+        <a class="navbar-brand" href="/">Library</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
           aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <!-- <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="./search-book">Find book</a>
@@ -29,20 +29,19 @@
               <a class="nav-link" aria-current="page" href="./">List books</a>
             </li>
           </ul>
-        </div>
+        </div> -->
       </div>
     </nav>
-    <div class="container">
+    <div class="container container-login">
       <form class="form-sigup">
         <h2 class="form-heading">Sign up</h2>
-
-
-        <input id="username" type="text" class="form-control mt-3" placeholder="Username" value="anastas"
-          autofocus="true" />
-        <input id="password" type="password" class="form-control  mt-3" placeholder="Password" value="Zdsc4232" />
-
-        <button class="btn btn-lg btn-primary btn-block  mt-3" type="submit">Sign up</button>
-
+        <input id="username" type="text" class="form-control mt-3" placeholder="Username" autofocus="true" />
+        <input id="password" type="password" class="form-control  mt-3" placeholder="Password" />
+        <input id="confirm-password" type="password" class="form-control  mt-3" placeholder="Confirm password" />
+        <div class="wrapper-btn-link">
+          <button class="btn btn-lg btn-primary btn-block mt-3" type="submit">Sign up</button>
+          <div class="link-wrap"><a href="/login">Already registered?</a></div>
+        </div>
       </form>
     </div>
   </div>
@@ -51,9 +50,8 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
+  <!-- <script src="./js/utils.js"></script> -->
   <script src="./js/signup.js"></script>
-  <script src="./js/utils.js"></script>
-
 </body>
 
 </html>

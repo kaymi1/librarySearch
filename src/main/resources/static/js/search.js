@@ -19,12 +19,16 @@ const getArrayBooks = async () => {
         let responseJSON = await response.json();
         let parsed = '';
         if (response.ok) {
-            document.getElementById('table-tbody').innerHTML = '';
-            responseJSON.forEach(el => {
-                document.getElementById('table-tbody').innerHTML +=
-                    `<tr class="index-row"><td>${el.author}</td><td>${el.name}</td><td>${el.publishedOn}</td><td>
-                </td></tr>`;
-            });
+            if(responseJSON.length < 1){
+                alert("Dont find any book with this params for search!");
+            } else {
+                document.getElementById('table-tbody').innerHTML = '';
+                responseJSON.forEach(el => {
+                    document.getElementById('table-tbody').innerHTML +=
+                        `<tr class="index-row"><td>${el.author}</td><td>${el.name}</td><td>${el.publishedOn}</td><td>
+                    </td></tr>`;
+                });
+            }
         } else {
             throw new Error(responseJSON.message);
         };

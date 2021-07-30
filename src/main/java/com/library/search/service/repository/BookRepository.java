@@ -13,4 +13,5 @@ public interface BookRepository extends CrudRepository<Book, Integer> {
     Boolean existsByName(String name);
     Boolean existsByAuthor(String author);
     Boolean existsByPublishedOn(String publishedOn);
+    Boolean existsByNameAndAuthorAndPublishedOn(String name, String author, String publishedOn);
 }

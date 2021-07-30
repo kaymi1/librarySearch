@@ -20,3 +20,16 @@
 .wrapper-table{
     margin-top: 30px;
 }
+.container-login{
+    width: 400px;
+}
+.form-heading{
+    text-align: center;
+}
+.wrapper-btn-link{
+    display: flex;
+    justify-content: space-between;
+}
+.link-wrap{
+    margin-top: 30px;
+}

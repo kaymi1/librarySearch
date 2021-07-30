@@ -2,59 +2,47 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/style.css">
-    <title>Library</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/style.css">
+  <title>Library</title>
 </head>
 
 <body>
-    <div class="wrapper-form">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#">Library</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                  <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/search-book">Find book</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/">List books</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </nav>
-        <div class="container">
-            <form class="form-signin">
-                <h2 class="form-heading">Log in</h2>
-
-
-                    <input id="username" type="text" class="form-control mt-3" placeholder="Username" autofocus="true" />
-                    <input id="password" type="password" class="form-control mt-3" placeholder="Password" />
-                    <!-- <span>${error}</span> -->
-                    <!-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> -->
-
-                    <button class="btn btn-lg btn-primary btn-block mt-3" type="submit">Log In</button>
-                    <!-- <h4 class="text-center"><a href="${contextPath}/registration">Create an account</a></h4> -->
-   
-            </form>
+  <div class="wrapper-form">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Library</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </nav>
+    <div class="container container-login">
+      <form class="form-signin">
+        <h2 class="form-heading">Log in</h2>
+        <input id="username" type="text" class="form-control mt-3" placeholder="Username" autofocus="true" />
+        <input id="password" type="password" class="form-control mt-3" placeholder="Password" />
+        <div class="wrapper-btn-link">
+          <!-- btn btn-primary -->
+          <!-- btn btn-lg btn-primary btn-block mt-3 -->
+          <button class="btn btn-lg btn-primary btn-block mt-3" type="submit">Log In</button>
+          <div class="link-wrap"><a href="/signup">Not registered yet?</a></div>
         </div>
+      </form>
     </div>
+  </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-   <script src="./js/login.js"></script>
-   <script src="./js/utils.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <!-- <script src="./js/utils.js"></script> -->
+  <script src="./js/login.js"></script>
 </body>
 
 </html>

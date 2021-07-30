@@ -7,6 +7,7 @@ import com.github.fge.jsonpatch.JsonPatch;
 import com.github.fge.jsonpatch.JsonPatchException;
 import com.library.search.service.exception.BookAlreadyExistsException;
 import com.library.search.service.exception.BookNotFoundException;
+import com.library.search.service.handlers.AdminLogoutRedirectHandler;
 import com.library.search.service.model.*;
 import com.library.search.service.payload.ApiResponse;
 import com.library.search.service.payload.BookPayload;
@@ -24,6 +25,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -42,6 +44,7 @@ public class BookController {
     @Autowired private ObjectMapper objectMapper;
     @Autowired private AuthenticationManager authenticationManager;
     @Autowired private BCryptPasswordEncoder bCryptPasswordEncoder;
+    @Autowired private AdminLogoutRedirectHandler adminLogoutRedirectHandler;
 
     @PostMapping(value = "/search", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> findBooks(@Valid @RequestBody BookPayload payload){
@@ -55,7 +58,6 @@ public class BookController {
         );
         resultFromDB.forEach(resultSearching::add);
         log.info("Response length is " + resultSearching.size());
-        // TODO: return payload object if it's 0
         return ResponseEntity.
                 ok(resultSearching.toArray());
     }
@@ -64,9 +66,11 @@ public class BookController {
     public ResponseEntity<?> createBook(@Valid @RequestBody BookPayload payload){
         log.info("Was received " + payload.toString());
         if(
-                bookRepository.existsByName(payload.getName()) &&
-                bookRepository.existsByAuthor(payload.getAuthor()) &&
-                bookRepository.existsByPublishedOn(payload.getPublishedOn())
+                bookRepository.existsByNameAndAuthorAndPublishedOn(
+                        payload.getName(),
+                        payload.getAuthor(),
+                        payload.getPublishedOn()
+                )
         ){
             log.info("The book {} already exists", payload);
             throw new BookAlreadyExistsException("The book " + payload + " already exists");
@@ -86,7 +90,6 @@ public class BookController {
     @PostMapping(value = "/signup", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> createUser(@Valid @RequestBody SignUpPayload payload){
         log.info("Was received " + payload.toString());
-//        Role USER_ROLE = roleRepository.findById(1L).orElse(new Role(1L, "ROLE_USER"));
         User user = User.builder()
                 .password(bCryptPasswordEncoder.encode(payload.getPassword()))
                 .username(payload.getUsername())
@@ -118,8 +121,21 @@ public class BookController {
         SecurityContext context = SecurityContextHolder.createEmptyContext();
         context.setAuthentication(authentication);
         SecurityContextHolder.setContext(context);
+        Map<String, String> map = adminLogoutRedirectHandler.getMapAdminNameToLogoutRedirect();
+        if(map.containsKey(payload.getUsername())){
+            String redirect = map.get(payload.getUsername());
+            return ResponseEntity.
+                    ok(new ApiResponse(redirect));
+        }
         return ResponseEntity.
-                ok(new ApiResponse("User " + payload.getUsername() + " was successfully authenticate!"));
+                ok(new ApiResponse("/"));
+    }
+
+    @GetMapping(value = "/users", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> getUser(@AuthenticationPrincipal User user){
+        log.info("Was received: {}", user);
+        return ResponseEntity.
+                ok(user);
     }
 
     @PatchMapping(

@@ -5,39 +5,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2b91fe79-c45e-4a15-9987-38c0426abe58" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_java_json_tools_btf_1_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_java_json_tools_jackson_coreutils_2_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_java_json_tools_json_patch_1_13.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_java_json_tools_msg_simple_1_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_findbugs_jsr305_2_0_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_security_2_3_1_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_config_5_3_3_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_core_5_3_3_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_web_5_3_3_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/search.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_json_json_20160810.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/librarySearch.iml" beforeDir="false" afterPath="$PROJECT_DIR$/librarySearch.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/library/search/service/LibrarySearchApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/library/search/service/LibrarySearchApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/library/search/service/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/library/search/service/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/library/search/service/controller/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/library/search/service/controller/BookController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/library/search/service/model/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/library/search/service/model/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/library/search/service/handlers/CustomLogoutSuccessHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/library/search/service/handlers/CustomLogoutSuccessHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/library/search/service/repository/BookRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/library/search/service/repository/BookRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/templates/search-book.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/librarySearch-1.0-SNAPSHOT.jar.original" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/library/search/service/payload/ApiResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/add-book.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/add-book.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/all-books.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/all-books.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/patch-book.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/patch-book.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/search.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/signup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/signup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/utils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/templates/add-book.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/templates/add-book.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/templates/all-books.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/templates/all-books.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/templates/patch-book.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/templates/patch-book.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/templates/search-book.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/templates/search-book.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/templates/sign-up.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/templates/sign-up.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/add-book.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/add-book.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/all-books.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/all-books.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/patch-book.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/patch-book.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/signup.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/signup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/utils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/templates/add-book.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/templates/add-book.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/templates/all-books.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/templates/all-books.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/templates/patch-book.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/templates/patch-book.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/templates/search-book.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/templates/search-book.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/templates/sign-up.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/templates/sign-up.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,8 +51,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -76,6 +79,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
