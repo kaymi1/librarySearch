@@ -51,11 +51,12 @@ public class BookController {
         Set<Book> resultSearching = new HashSet<>();
 
         log.info("Was received " + payload.toString());
-        Iterable<Book> resultFromDB = bookRepository.findByNameContainingAndAuthorContainingAndPublishedOnContaining(
-                payload.getName(),
-                payload.getAuthor(),
-                payload.getPublishedOn()
-        );
+        Iterable<Book> resultFromDB = bookRepository.
+                findByNameContainingAndAuthorContainingAndPublishedOnContaining(
+                    payload.getName(),
+                    payload.getAuthor(),
+                    payload.getPublishedOn()
+                );
         resultFromDB.forEach(resultSearching::add);
         log.info("Response length is " + resultSearching.size());
         return ResponseEntity.
@@ -85,57 +86,6 @@ public class BookController {
 
         return ResponseEntity.
                 ok(saved);
-    }
-
-    @PostMapping(value = "/signup", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> createUser(@Valid @RequestBody SignUpPayload payload){
-        log.info("Was received " + payload.toString());
-        User user = User.builder()
-                .password(bCryptPasswordEncoder.encode(payload.getPassword()))
-                .username(payload.getUsername())
-                .roles(new HashSet<>() {{
-                    add(new Role(1L, "ROLE_USER"));
-                }})
-                .build();
-        User saved = userRepository.save(user);
-        log.info("The user {} was saved", saved);
-        return ResponseEntity.
-                ok(saved);
-    }
-
-    @PostMapping(value = "/login", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> authenticateUser(@Valid @RequestBody SignInPayload payload){
-        log.info("Was received: {}", payload.toString());
-        Authentication authentication = null;
-        try{
-            authentication = authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(
-                            payload.getUsername(),
-                            payload.getPassword()
-                    )
-            );
-        } catch (AuthenticationException e){
-            return ResponseEntity.
-                    status(HttpStatus.BAD_REQUEST).build();
-        }
-        SecurityContext context = SecurityContextHolder.createEmptyContext();
-        context.setAuthentication(authentication);
-        SecurityContextHolder.setContext(context);
-        Map<String, String> map = adminLogoutRedirectHandler.getMapAdminNameToLogoutRedirect();
-        if(map.containsKey(payload.getUsername())){
-            String redirect = map.get(payload.getUsername());
-            return ResponseEntity.
-                    ok(new ApiResponse(redirect));
-        }
-        return ResponseEntity.
-                ok(new ApiResponse("/"));
-    }
-
-    @GetMapping(value = "/users", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> getUser(@AuthenticationPrincipal User user){
-        log.info("Was received: {}", user);
-        return ResponseEntity.
-                ok(user);
     }
 
     @PatchMapping(
