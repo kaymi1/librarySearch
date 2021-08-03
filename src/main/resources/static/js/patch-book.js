@@ -41,17 +41,17 @@ const patchBook = async () => {
         let patchName = {
             op: "replace",
             path: "/name",
-            value: $('#name').val()
+            value: $('#name').val().trim()
         };
         let patchAuthor = {
             op: "replace",
             path: "/author",
-            value: $('#author').val()
+            value: $('#author').val().trim()
         };
         let patchPublishedOn = {
             op: "replace",
             path: "/publishedOn",
-            value: $('#date').val()
+            value: $('#date').val().trim()
         };
         patch.push(patchName, patchAuthor, patchPublishedOn);
         try {

@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 public class CustomLogoutSuccessHandler extends
         SimpleUrlLogoutSuccessHandler implements LogoutSuccessHandler {
 
-    @Autowired private AdminLogoutRedirectHandler adminLogoutRedirectHandler;
+    @Autowired private AdminRedirectPageAfterLogoutHandler adminRedirectPageAfterLogoutHandler;
 
     @Override
     public void onLogoutSuccess(
@@ -34,9 +34,9 @@ public class CustomLogoutSuccessHandler extends
         List<GrantedAuthority> authorities = new ArrayList<>(authentication.getAuthorities());
         List<String> authoritiesNames = authorities.stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList());
         if(authoritiesNames.contains("ROLE_ADMIN")){
-            Map<String, String> map = adminLogoutRedirectHandler.getMapAdminNameToLogoutRedirect();
+            Map<String, String> map = adminRedirectPageAfterLogoutHandler.getMapAdminNameToLogoutRedirect();
             map.put(authentication.getName(), splitRefererUrl[1]);
-            adminLogoutRedirectHandler.setMapAdminNameToLogoutRedirect(map);
+            adminRedirectPageAfterLogoutHandler.setMapAdminNameToLogoutRedirect(map);
             log.info("Logout handler added on " + authentication.getName() + " to " + splitRefererUrl[1]);
         }
         log.info("Logout from: " + refererUrl);

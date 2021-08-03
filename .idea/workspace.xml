@@ -7,9 +7,18 @@
     <list default="true" id="2b91fe79-c45e-4a15-9987-38c0426abe58" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/library/search/service/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/library/search/service/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/library/search/service/controller/AuthEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/library/search/service/controller/AuthEndpoint.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/library/search/service/controller/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/library/search/service/controller/BookController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/library/search/service/handlers/AdminLogoutRedirectHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/library/search/service/handlers/AdminRedirectPageAfterLogoutHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/library/search/service/handlers/CustomLogoutSuccessHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/library/search/service/handlers/CustomLogoutSuccessHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/library/search/service/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/library/search/service/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/add-book.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/add-book.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/patch-book.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/patch-book.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/search.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/signup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/signup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/utils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/search.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/signup.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/signup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/utils.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

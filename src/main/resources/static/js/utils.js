@@ -1,15 +1,15 @@
 const validateForm = () => {
     let errorMessageArr = [];
 
-    const name = $('#name').val() || 'none';
-    const author = $('#author').val() || 'none';
-    const publishedOn = $('#date').val() || 'none';
+    const name = $('#name').val().trim() || 'none';
+    const author = $('#author').val().trim() || 'none';
+    const publishedOn = $('#date').val().trim() || 'none';
 
-    let authorExp = author.match(/[a-zA-Z\s]+/g);
+    let authorExp = author.match(/[a-zA-Z\s\,]+/g);
     let errorMessageAuthor = author == 'none' ? "Filed cannot be empty!" : 
     author.length > 255 ? "Too many characters, max is 255!" :
     authorExp && author.length == authorExp[0].length ? 
-    "clear" : "Unexpected symbols, it must contain only characters A-Z, a-z.";
+    "clear" : "Unexpected symbols, must contain only characters A-Z, a-z.";
     if (errorMessageAuthor != "clear") {
         errorMessageArr.push(errorMessageAuthor);
         if(!$('.error-author').length){
@@ -136,6 +136,6 @@ $('.logout-link').click(function () {
     //     }
     // })();
     localStorage.setItem('userRole', '');
-    localStorage.setItem("isAuthenticated", false);
+    localStorage.setItem("isAuthenticated", "false");
     localStorage.setItem("username", '');
 });

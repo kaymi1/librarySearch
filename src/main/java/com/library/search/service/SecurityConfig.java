@@ -1,6 +1,6 @@
 package com.library.search.service;
 
-import com.library.search.service.handlers.AdminLogoutRedirectHandler;
+import com.library.search.service.handlers.AdminRedirectPageAfterLogoutHandler;
 import com.library.search.service.handlers.CustomAuthenticationFailureHandler;
 import com.library.search.service.handlers.CustomLogoutHandler;
 import com.library.search.service.handlers.CustomLogoutSuccessHandler;
@@ -12,9 +12,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.BeanIds;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -22,7 +20,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
-import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 
@@ -113,8 +110,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
-    public AdminLogoutRedirectHandler adminLogoutRedirectHandler(){
-        return new AdminLogoutRedirectHandler();
+    public AdminRedirectPageAfterLogoutHandler adminRedirectPageAfterLogoutHandler(){
+        return new AdminRedirectPageAfterLogoutHandler();
     }
 
 //    @Bean

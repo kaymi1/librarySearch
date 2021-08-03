@@ -7,12 +7,10 @@ import com.github.fge.jsonpatch.JsonPatch;
 import com.github.fge.jsonpatch.JsonPatchException;
 import com.library.search.service.exception.BookAlreadyExistsException;
 import com.library.search.service.exception.BookNotFoundException;
-import com.library.search.service.handlers.AdminLogoutRedirectHandler;
+import com.library.search.service.handlers.AdminRedirectPageAfterLogoutHandler;
 import com.library.search.service.model.*;
 import com.library.search.service.payload.ApiResponse;
 import com.library.search.service.payload.BookPayload;
-import com.library.search.service.payload.SignInPayload;
-import com.library.search.service.payload.SignUpPayload;
 import com.library.search.service.repository.BookRepository;
 import com.library.search.service.repository.RoleRepository;
 import com.library.search.service.repository.UserRepository;
@@ -22,12 +20,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -44,13 +36,14 @@ public class BookController {
     @Autowired private ObjectMapper objectMapper;
     @Autowired private AuthenticationManager authenticationManager;
     @Autowired private BCryptPasswordEncoder bCryptPasswordEncoder;
-    @Autowired private AdminLogoutRedirectHandler adminLogoutRedirectHandler;
+    @Autowired private AdminRedirectPageAfterLogoutHandler adminRedirectPageAfterLogoutHandler;
 
     @PostMapping(value = "/search", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> findBooks(@Valid @RequestBody BookPayload payload){
         Set<Book> resultSearching = new HashSet<>();
 
         log.info("Was received " + payload.toString());
+        //
         Iterable<Book> resultFromDB = bookRepository.
                 findByNameContainingAndAuthorContainingAndPublishedOnContaining(
                     payload.getName(),
@@ -74,7 +67,7 @@ public class BookController {
                 )
         ){
             log.info("The book {} already exists", payload);
-            throw new BookAlreadyExistsException("The book " + payload + " already exists");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
         Book book = Book.builder()
                 .author(payload.getAuthor())

@@ -1,7 +1,7 @@
 const createUser = async () => {
     if(validateFormUserSignUp()){
-        let username = $('#username').val();
-        let password = $('#password').val();
+        let username = $('#username').val().trim();
+        let password = $('#password').val().trim();
         try {
             let response = await
                 fetch('http://localhost:8080/signup', {
@@ -11,12 +11,16 @@ const createUser = async () => {
                     },
                     body: JSON.stringify({ username, password })
                 });
-            let responseJSON = await response.json();
+            
             if (response.ok) {
+                let responseJSON = await response.json();
                 alert("User " + responseJSON.username + " was created!");
                 window.location.pathname = '/login';
             } else {
-                throw new Error(responseJSON.error);
+                if (response.status == 400) {
+                    throw new Error('User with this username already exists!');
+                }
+                // throw new Error(responseJSON.error);
             };
         } catch (err) {
             alert(err);
@@ -36,16 +40,16 @@ $('.btn').click(handleSubmit);
 const validateFormUserSignUp = () => {
     let errorMessageArr = [];
 
-    const username = $('#username').val() || 'none';
-    const password = $('#password').val() || 'none';
-    const confirmPassword = $('#confirm-password').val();
+    const username = $('#username').val().trim() || 'none';
+    const password = $('#password').val().trim() || 'none';
+    const confirmPassword = $('#confirm-password').val().trim();
 
 
     let usernameExp = username.match(/[\d*[a-zA-Z]+\d*]*/gi);
     let errorMessageUsername = username == 'none' ? "Filed cannot be empty!" : 
     username.length > 255 ? "Too many characters, max is 255!" :
     usernameExp && username.length == usernameExp[0].length ? 
-    "clear" : "Unexpected symbols, it must contain only characters A-Z, a-z and 0-9!";
+    "clear" : "Unexpected symbols, must contain only characters A-Z, a-z and 0-9!";
     if (errorMessageUsername != "clear") {
         errorMessageArr.push(errorMessageUsername);
         if(!$('.error-username').length){

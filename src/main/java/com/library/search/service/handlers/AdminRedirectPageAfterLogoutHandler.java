@@ -15,6 +15,6 @@ import java.util.Map;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AdminLogoutRedirectHandler {
+public class AdminRedirectPageAfterLogoutHandler {
     private Map<String, String> mapAdminNameToLogoutRedirect = new HashMap<>();
 }

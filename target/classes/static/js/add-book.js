@@ -1,8 +1,8 @@
 const createBook = async () => {
     if (validateForm()) {
-        const name = $('#name').val();
-        const author = $('#author').val();
-        const publishedOn = $('#date').val();
+        const name = $('#name').val().trim();
+        const author = $('#author').val().trim();
+        const publishedOn = $('#date').val().trim();
         let requestBody = {
             author: author,
             name: name,
@@ -17,13 +17,15 @@ const createBook = async () => {
                     },
                     body: JSON.stringify(requestBody)
                 });
-            let responseJSON = await response.json();
-            let parsed = '';
             if (response.ok) {
+                let responseJSON = await response.json();
                 alert("Book " + responseJSON.name + " was created!");
                 window.location.pathname = '/';
             } else {
-                throw new Error(responseJSON.error);
+                if (response.status == 400) {
+                    throw new Error('Book with this params already exists!');
+                }
+                // throw new Error(responseJSON.error);
             };
         } catch (err) {
             alert(err);

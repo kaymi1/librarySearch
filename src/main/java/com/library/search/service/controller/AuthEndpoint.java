@@ -1,8 +1,7 @@
 package com.library.search.service.controller;
 
-import com.library.search.service.exception.BookAlreadyExistsException;
 import com.library.search.service.exception.UserAlreadyExistsException;
-import com.library.search.service.handlers.AdminLogoutRedirectHandler;
+import com.library.search.service.handlers.AdminRedirectPageAfterLogoutHandler;
 import com.library.search.service.model.Role;
 import com.library.search.service.model.User;
 import com.library.search.service.payload.ApiResponse;
@@ -38,14 +37,14 @@ public class AuthEndpoint {
     @Autowired private UserRepository userRepository;
     @Autowired private AuthenticationManager authenticationManager;
     @Autowired private BCryptPasswordEncoder bCryptPasswordEncoder;
-    @Autowired private AdminLogoutRedirectHandler adminLogoutRedirectHandler;
+    @Autowired private AdminRedirectPageAfterLogoutHandler adminRedirectPageAfterLogoutHandler;
 
     @PostMapping(value = "/signup", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> createUser(@Valid @RequestBody SignUpPayload payload){
         log.info("Was received " + payload.toString());
         if(userRepository.existsByUsername(payload.getUsername())){
             log.info("The user {} already exists", payload.getUsername());
-            throw new UserAlreadyExistsException("The user " + payload.getUsername() + " already exists");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
         User user = User.builder()
                 .password(bCryptPasswordEncoder.encode(payload.getPassword()))
@@ -80,7 +79,7 @@ public class AuthEndpoint {
         context.setAuthentication(authentication);
         SecurityContextHolder.setContext(context);
 
-        Map<String, String> map = adminLogoutRedirectHandler.getMapAdminNameToLogoutRedirect();
+        Map<String, String> map = adminRedirectPageAfterLogoutHandler.getMapAdminNameToLogoutRedirect();
         if(map.containsKey(payload.getUsername())){
             String redirect = map.get(payload.getUsername());
             return ResponseEntity.
