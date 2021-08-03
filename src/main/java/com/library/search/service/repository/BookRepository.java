@@ -1,6 +1,7 @@
 package com.library.search.service.repository;
 
 import com.library.search.service.model.Book;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 public interface BookRepository extends CrudRepository<Book, Integer> {
@@ -14,4 +15,6 @@ public interface BookRepository extends CrudRepository<Book, Integer> {
     Boolean existsByAuthor(String author);
     Boolean existsByPublishedOn(String publishedOn);
     Boolean existsByNameAndAuthorAndPublishedOn(String name, String author, String publishedOn);
+    @Query(value = "select distinct(books.published_on) from books", nativeQuery = true)
+    Iterable<String> findDistinctByPublishedOn();
 }

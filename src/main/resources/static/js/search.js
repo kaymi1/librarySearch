@@ -2,7 +2,7 @@ const getArrayBooks = async () => {
     if(validateFormForSearch()){
         const name = $('#name').val() || '';
         const author = $('#author').val() || '';
-        const publishedOn = $('#date').val() || '';
+        const publishedOn = $('.form-select').val();
         let requestBody = {
             author: author,
             name: name,
@@ -40,6 +40,28 @@ const getArrayBooks = async () => {
     }
 }
 
+const getYears = async () => {
+    try {
+        let response = await
+            fetch(`http://localhost:8080/books/years`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json;charset=utf-8'
+                },
+            });
+        let responseJSON = await response.json();
+        if (response.ok) {
+            addSelectYears(responseJSON);
+        } else {
+            if (response.status == 403) {
+                throw new Error("You don't have enough athorities!")
+            }
+        }
+    } catch (err) {
+        alert(err);
+    }
+}
+
 const handleSubmit = () => {
     (async () => {
         await getArrayBooks();
@@ -48,18 +70,35 @@ const handleSubmit = () => {
     return false;
 }
 
+const addSelectYears = (array) => {
+    let select = $('<select></select>');
+    select.addClass('form-select');
+    select.addClass('mb-3');
+    let index = 1;
+    let stringHTML = '<option value="" selected>none</option>';
+    array.forEach(el => {
+        stringHTML += `<option value="${el}">${el}</option>`
+    });
+    select.html(stringHTML);
+    $('.before-year').after(select);
+  }
+
+(async () => {
+    await getYears();
+})();
 
 $('.btn').click(handleSubmit);
 
 const validateFormForSearch = () => {
     let errorMessageArr = [];
 
-    const name = $('#name').val();
-    const author = $('#author').val();
-    const publishedOn = $('#date').val();
+    const name = $('#name').val() || 'none';
+    const author = $('#author').val() || 'none';
+    // const publishedOn = $('#date').val();
 
     let authorExp = author.match(/[a-zA-Z\s]+/g);
-    let errorMessageAuthor = author.length > 255 ? "Too many characters, max is 255!" :
+    let errorMessageAuthor = author == 'none' ? 'clear' : 
+    author.length > 255 ? "Too many characters, max is 255!" :
     authorExp && author.length == authorExp[0].length ? 
     "clear" : "Unexpected symbols, it must contain only characters A-Z, a-z.";
     if (errorMessageAuthor != "clear") {
@@ -80,7 +119,9 @@ const validateFormForSearch = () => {
     }
 
     let nameBookExp = name.match(/[a-zA-Z0-9\.\s\?\,\:\-]+/g);
-    let errorMessageBookName = name.length > 255 ? "Too many characters, max is 255!" :
+    let errorMessageBookName = 
+    name == 'none' ? 'clear' : 
+    name.length > 255 ? "Too many characters, max is 255!" :
     nameBookExp && name.length == nameBookExp[0].length ? 
     "clear" : "Unexpected symbols, it must contain only characters A-Z, a-z, and '.', ',', '?', '!', ':', '-'.";
     if (errorMessageBookName != "clear") {
@@ -100,27 +141,27 @@ const validateFormForSearch = () => {
         }
     }
 
-    let numbersYearExp = publishedOn.match(/\d{1,4}/g);
-    let errorMessageYear = 
-    numbersYearExp && publishedOn.length == numbersYearExp[0].length ? "clear" : 
-    publishedOn.length > 4 ? "Too many characters, max is four!" :
-    "Unexpected symbols! The value of the field must be only numbers!";
-    if (errorMessageYear != "clear") {
-        errorMessageArr.push(errorMessageYear);
-        if(!$('.error-date').length){
-            let error = $('<div></div>').text(errorMessageYear);
-            error.addClass('invalid-feedback');
-            error.addClass('error-date');
-            error.attr('style', 'display:block;')
-            $('#date').after(error);
-        } else {
-            $('.error-date').text(errorMessageYear);
-        }
-    } else {
-        if($('.error-date').length){
-            $('.error-date').remove();
-        }
-    }
+    // let numbersYearExp = publishedOn.match(/\d{1,4}/g);
+    // let errorMessageYear = 
+    // numbersYearExp && publishedOn.length == numbersYearExp[0].length ? "clear" : 
+    // publishedOn.length > 4 ? "Too many characters, max is four!" :
+    // "Unexpected symbols! The value of the field must be only numbers!";
+    // if (errorMessageYear != "clear") {
+    //     errorMessageArr.push(errorMessageYear);
+    //     if(!$('.error-date').length){
+    //         let error = $('<div></div>').text(errorMessageYear);
+    //         error.addClass('invalid-feedback');
+    //         error.addClass('error-date');
+    //         error.attr('style', 'display:block;')
+    //         $('#date').after(error);
+    //     } else {
+    //         $('.error-date').text(errorMessageYear);
+    //     }
+    // } else {
+    //     if($('.error-date').length){
+    //         $('.error-date').remove();
+    //     }
+    // }
 
     if(errorMessageArr.length != 0){
         return false;

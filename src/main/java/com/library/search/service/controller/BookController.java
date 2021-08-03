@@ -76,7 +76,6 @@ public class BookController {
                 .build();
         Book saved = bookRepository.save(book);
         log.info("The book {} was saved", saved);
-
         return ResponseEntity.
                 ok(saved);
     }
@@ -115,6 +114,17 @@ public class BookController {
         log.info("Retrieving all books");
         return ResponseEntity.
                 ok(bookRepository.findAll());
+    }
+
+    @GetMapping(value = "/books/years", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> findAllYears(){
+        log.info("Retrieving all books years");
+        Set<String> resultSearching = new HashSet<>();
+        Iterable<String> resultDB = bookRepository.findDistinctByPublishedOn();
+//        resultDB.forEach(Object::toString);
+        resultDB.forEach(resultSearching::add);
+        return ResponseEntity.
+                ok(resultSearching);
     }
 
     @GetMapping(value = "/books/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
